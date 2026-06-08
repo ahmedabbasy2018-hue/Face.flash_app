@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaceFlash | إعلاناتك بلمسة ذكية</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+        }
+
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            margin: 0; padding: 20px; min-height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        .container { width: 100%; max-width: 450px; }
+
+        .card { 
+            background: var(--card-bg); padding: 25px; border-radius: 24px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); margin-bottom: 20px;
+        }
+
+        h2 { color: var(--text); margin-top: 0; }
+
+        input { 
+            width: 100%; padding: 15px; margin: 10px 0; border: 2px solid #e2e8f0;
+            border-radius: 14px; box-sizing: border-box; font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus { border-color: var(--primary); outline: none; }
+
+        button { 
+            width: 100%; padding: 16px; background: var(--primary); color: white;
+            border: none; border-radius: 14px; font-size: 18px; font-weight: bold;
+            cursor: pointer; transition: transform 0.2s, background 0.3s;
+        }
+
+        button:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+        .price-box { 
+            background: #f1f5f9; padding: 15px; border-radius: 16px;
+            text-align: center; margin: 15px 0; font-weight: bold;
+        }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card" style="text-align: center;">
+        <h1 style="color: var(--primary);">FaceFlash ⚡</h1>
+        <p>صناعة إعلاناتك بضغطة زر</p>
+    </div>
+
+    <div class="card">
+        <h3>إنشاء إعلان جديد</h3>
+        <input type="number" id="dailyBudget" placeholder="الميزانية اليومية (جم)" oninput="calculate()">
+        <input type="number" id="days" placeholder="عدد أيام الحملة" oninput="calculate()">
+        
+        <div class="price-box">
+            الإجمالي: <span id="totalCost" style="color: var(--primary); font-size: 1.4em;">200</span> جنيه
+        </div>
+        
+        <button onclick="showPayment()">تمويل وإطلاق الإعلان 🚀</button>
+    </div>
+
+    <!-- زر المبرمج -->
+    <div style="text-align: center;">
+        <a href="#" onclick="document.getElementById('loginModal').classList.toggle('hidden')" style="color: #64748b; font-size: 0.8em;">دخول مدير النظام</a>
+    </div>
+    <div id="loginModal" class="card hidden">
+        <input type="text" id="adminUser" placeholder="اسم المستخدم">
+        <input type="password" id="adminPass" placeholder="كلمة المرور">
+        <button onclick="checkLogin()">دخول Ahmed</button>
+    </div>
+</div>
+
+<script>
+    function calculate() {
+        let budget = document.getElementById('dailyBudget').value || 0;
+        let days = document.getElementById('days').value || 0;
+        document.getElementById('totalCost').innerText = (budget * days) + 200;
+    }
+    
+    function checkLogin() {
+        if(document.getElementById('adminUser').value == "ahmed" && document.getElementById('adminPass').value == "Ae124545") {
+            alert("مرحباً بك يا Ahmed، لوحة التحكم جاهزة.");
+        } else {
+            alert("بيانات غير صحيحة!");
+        }
+    }
+
+    function showPayment() {
+        alert("يرجى التحويل إلى رقم: 01140390866 لإكمال الطلب.");
+    }
+</script>
+
+</body>
+</html>
